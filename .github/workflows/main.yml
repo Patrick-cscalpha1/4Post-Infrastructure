@@ -1,0 +1,41 @@
+name: Deploy AWS CDK
+
+on:
+  push:
+    branches:
+      - main
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  aws_cdk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_GITHUB_ROLE }}
+          aws-region: eu-north-1
+
+      - name: install npm
+        run: 'sudo apt update -y && sudo apt install nodejs npm -y'
+
+      - name: Install AWS CDK
+        run: 'sudo npm install -g aws-cdk@2.172.0'
+
+      - name: Install Requirements 
+        run: 'pip3 install -r requirements.txt'
+
+      - name: CDK Synth
+        run: cdk synth
+
+      - name: CDK Deploy
+        run: cdk deploy --all --require-approval never
