@@ -1,0 +1,12 @@
+{
+    "bucket_name": "4post-social-static-bucket",
+    "cloudfront_certificate_arn": "arn:aws:acm:us-east-1:703671928475:certificate/22ce674d-103a-4e3a-8d86-c3ac4a6e76e4",
+    "apigateway_certificate_arn": "arn:aws:acm:eu-north-1:703671928475:certificate/a2e54df8-c5a0-4d99-b2e4-87a1fc6e4e16",
+    "cloudfront_domain": ["4post.click", "www.4post.click"],
+    "api_domain": "api.4post.click",
+    "table_name": "4post_table",
+    "vpc_cidr": "10.0.0.0/16",
+    "subnet_cidr_mask": 24,
+    "max_azs": 2,
+    "nat_gateways": 1
+}

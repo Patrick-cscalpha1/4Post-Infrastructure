@@ -1,0 +1,11 @@
+{
+  "hosted-zone:account=703671928475:domainName=4post.click:region=eu-north-1": {
+    "Id": "/hostedzone/Z05310933W4ZI96DYMC5U",
+    "Name": "4post.click."
+  },
+  "availability-zones:account=703671928475:region=eu-north-1": [
+    "eu-north-1a",
+    "eu-north-1b",
+    "eu-north-1c"
+  ]
+}
