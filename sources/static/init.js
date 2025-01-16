@@ -224,7 +224,7 @@ window.onload = function() {
             document.getElementById("followed").style.display = "none";
           }
 
-        }else{
+        }else if(xhr.status!=200){
             load_page("/",index_page,true);
             index_load();
         }
