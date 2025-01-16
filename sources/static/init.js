@@ -224,6 +224,9 @@ window.onload = function() {
             document.getElementById("followed").style.display = "none";
           }
 
+        }else{
+            load_page("/",index_page,true);
+            index_load();
         }
 
       }
