@@ -25,7 +25,7 @@ class InfrastructureStack(Stack):
         super().__init__(scope, construct_id, **kwargs)
 
 
-        # Create VPC
+        # Create VPC (removed fow now)
         """
         vpc = ec2.Vpc(self, "SocialNetworkVPC",
                 cidr=params["vpc_cidr"],
