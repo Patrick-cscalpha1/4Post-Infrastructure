@@ -29,7 +29,7 @@ class InfrastructureStack(Stack):
         vpc = ec2.Vpc(self, "SocialNetworkVPC",
                 cidr=params["vpc_cidr"],
                 max_azs=params["max_azs"],
-                nat_gateways=params["nat_gateways"],  # Allows Lambda in private subnets to access the internet
+                #nat_gateways=params["nat_gateways"],  # Allows Lambda in private subnets to access the internet
                 subnet_configuration=[
                     ec2.SubnetConfiguration(
                         name="PublicSubnet",
@@ -38,7 +38,7 @@ class InfrastructureStack(Stack):
                     ),
                     ec2.SubnetConfiguration(
                         name="PrivateSubnet",
-                        subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT,
+                        #subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT,
                         cidr_mask=params["subnet_cidr_mask"]
                     )
                 ])    
@@ -130,7 +130,7 @@ class InfrastructureStack(Stack):
                     handler='api_handler.lambda_handler', 
                     code= lambda_.Code.from_asset('./lambdas'),
                     vpc=vpc,
-                    vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT)
+                    #vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT)
         ) 
         my_lambda.add_environment("TABLE_NAME", dynamo_table.table_name)
 
@@ -140,9 +140,9 @@ class InfrastructureStack(Stack):
 
         # Create VPC Endpoint for DynamoDB
 
-        vpc.add_gateway_endpoint("DynamoDbEndpoint",
-            service=ec2.GatewayVpcEndpointAwsService.DYNAMODB
-        )
+        #vpc.add_gateway_endpoint("DynamoDbEndpoint",
+            #service=ec2.GatewayVpcEndpointAwsService.DYNAMODB
+        #)
         
         cert2 = acm.Certificate.from_certificate_arn(self,"ExistingCertificate2",params["apigateway_certificate_arn"])
 
