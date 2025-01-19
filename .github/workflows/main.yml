@@ -2,10 +2,11 @@ name: Deploy AWS CDK
 
 on:
   push:
+    paths-ignore:
+      - '.github/workflows/**'
+      - 'README.md'
     branches:
       - main
-
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 permissions:
